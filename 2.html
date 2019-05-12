@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modal</title>
+    <style>
+        body {
+            background-color: #1A1C22;
+        }
+        
+        h1 {
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 40px;
+            margin-top: 200px;
+            color: #dddddd;
+        }
+        
+        .button {
+            display: block;
+            margin: auto;
+            color: #1C2226;
+            background-color: #b1b1b1;
+            border: 10px double #343A40;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-size: 20px;
+            padding: 10px;
+        }
+        
+        .button:hover {
+            background-color: #dddddd;
+        }
+        
+        .modal {
+            visibility: hidden;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            font-size: 25px;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .modal .modal__content {
+            text-transform: uppercase;
+            color: #090B0D;
+            font-size: 25px;
+            background-color: #dddddd;
+            margin: auto;
+            padding: 20px;
+            width: 50%;
+            border: 10px double rgb(65, 66, 66);
+            border-radius: 50px;
+        }
+        
+        .modal .modal__content a {
+            color: #090B0D;
+        }
+        
+        .modal .modal__content a:hover {
+            color: #5a6470;
+        }
+        
+        .close {
+            color: #000000;
+            float: right;
+            font-size: 35px;
+            font-weight: bold;
+        }
+        
+        .close:hover {
+            color: #c70000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>okno modalne</h1>
+        <button class="button">pokazać</button>
+
+        <div id="myModal" class="modal">
+            <div class="modal__content">
+                <span class="close">&times;</span>
+                <p>
+                    pokazać <a href="3.html">trzecie zadanie</a>
+                </p>
+            </div>
+        </div>
+    </main>
+    <script>
+        var modal = document.getElementById('myModal');
+        var btn = document.getElementsByClassName("button")[0];
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.visibility = "visible";
+        }
+
+        span.onclick = function() {
+            modal.style.visibility = "hidden";
+        }
+    </script>
+</body>
+
+</html>

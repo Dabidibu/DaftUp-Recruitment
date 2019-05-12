@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #1A1C22;
+            height: 100%;
+        }
+        
+        .filter__wrap {
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        input {
+            width: 40%;
+            height: 50px;
+            background-color: #e0e0e0;
+            border: 3px double #6C808C;
+            color: #1C2226;
+            font-size: 25px;
+            border-radius: 25px 0 0 25px;
+            text-align: left 25px;
+            padding-left: 25px;
+            ;
+        }
+        
+        .table__info {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-collapse: collapse;
+        }
+        
+        .table__info th {
+            color: #e0e0e0;
+            font-size: 25px;
+            text-align: center;
+            border: 3px solid #555;
+            padding: 6px;
+        }
+        
+        .button {
+            text-transform: uppercase;
+            height: 58.3px;
+            border: 3px double #e0e0e0;
+            color: #e0e0e0;
+            background-color: #b30000;
+            opacity: 0.5;
+            font-size: 20px;
+            border-radius: 0 25px 25px 0;
+        }
+        
+        .button:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="filter__wrap">
+            <input class="form__control" type="text" id="searchText" placeholder="Filtruj..." onkeypress="return runScript(event)">
+
+            <button class="button" onclick="tableSearch()">Filtruj</button>
+        </div>
+        <table class="table__info" id="tableInfo">
+            <tbody>
+                <tr>
+                    <th>Walmart</th>
+                </tr>
+                <tr>
+                    <th>State Grid</th>
+                </tr>
+                <tr>
+                    <th>Sinopec Group</th>
+                </tr>
+                <tr>
+                    <th>China National Petroleum</th>
+                </tr>
+                <tr>
+                    <th>Royal Dutch Shell</th>
+                </tr>
+                <tr>
+                    <th>Toyota Motor</th>
+                </tr>
+                <tr>
+                    <th>Volkswagen</th>
+                </tr>
+                <tr>
+                    <th>BP</th>
+                </tr>
+                <tr>
+                    <th>Exxon Mobil</th>
+                </tr>
+                <tr>
+                    <th>Berkshire Hathaway</th>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <script>
+        function tableSearch() {
+            var phrase = document.getElementById('searchText');
+            var table = document.getElementById('tableInfo');
+            var regPhrase = new RegExp(phrase.value, 'i');
+            var flag = false;
+            for (var i = 0; i < table.rows.length; i++) {
+                flag = false;
+                for (var j = table.rows[i].cells.length - 1; j >= 0; j--) {
+                    flag = regPhrase.test(table.rows[i].cells[j].innerHTML);
+                    if (flag) break;
+                }
+                if (flag) {
+                    table.rows[i].style.display = "";
+                } else {
+                    table.rows[i].style.display = "none";
+                }
+
+            }
+        }
+
+        function runScript(e) {
+            if (e.keyCode == 13) {
+                tableSearch()
+            }
+        }
+    </script>
+</body>
+
+</html>
